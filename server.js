@@ -1,8 +1,8 @@
 // Riz'Fighters relay server. Deploy to Render/Fly/Railway.
 // Run: `node server.js` (port 3001 or process.env.PORT)
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 
 const app = express();
 const server = http.createServer(app);
@@ -23,13 +23,19 @@ io.on('connection', (socket) => {
     const room = rooms[roomId];
     if (room.players.length >= 2) return socket.emit('room_full');
     const slot = room.players.length + 1;
-    room.players.push(socket); room.names.push(playerName);
+    room.players.push(socket);
+    room.names[slot - 1] = playerName;
     socket.data = { roomId, slot };
     socket.join(roomId);
     socket.emit(slot === 1 ? 'room_created' : 'room_joined', { roomId, slot });
-    if (slot === 2) {
-      io.to(roomId).emit('player_joined', { p1Name: room.names[0], p2Name: room.names[1] });
+    // Broadcast current player names to everyone in the room
+    io.to(roomId).emit('player_joined', { p1Name: room.names[0] || '', p2Name: room.names[1] || '' });
+    // Also send to the newly joined socket (in case it missed the broadcast)
+    socket.emit('player_joined', { p1Name: room.names[0] || '', p2Name: room.names[1] || '' });
+    // If both players are present, signal that the match is ready
+    if (room.players.length === 2) {
       io.to(roomId).emit('match_ready', { p1Name: room.names[0], p2Name: room.names[1] });
+      socket.emit('match_ready', { p1Name: room.names[0], p2Name: room.names[1] });
     }
   });
 

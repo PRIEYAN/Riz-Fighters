@@ -84,6 +84,14 @@ export class OnboardScene extends Phaser.Scene {
 
     this.statusText?.setText(create ? `CREATING ROOM ${room}...` : `JOINING ROOM ${room}...`).setColor("#ffaa00");
     s.off("room_created"); s.off("room_joined"); s.off("room_full"); s.off("connect_error");
+    // Listen for match_ready before transitioning to waiting scene.
+    // If the match is already ready (both players joined), go straight to CharSelect.
+    s.once("match_ready", ({ p1Name, p2Name }: any) => {
+      // Update opponent name for consistency.
+      matchState.oppName = matchState.slot === 1 ? p2Name : p1Name;
+      // Directly start CharSelect scene, skipping waiting screen.
+      this.scene.start("CharSelect");
+    });
     s.once("room_created", ({ slot }: any) => { matchState.slot = slot; this.scene.start("Waiting"); });
     s.once("room_joined",  ({ slot }: any) => { matchState.slot = slot; this.scene.start("Waiting"); });
     s.once("room_full", () => this.statusText?.setText("ROOM FULL").setColor("#ff3030"));
