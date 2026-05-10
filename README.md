@@ -4,12 +4,12 @@
 <img src="https://raw.githubusercontent.com/trinib/trinib/a5f17399d881c5651a89bfe4a621893f5c4b5041/images/marquee.gif" width="100%"/>
 
 ```
-██████╗ ██████╗  ██████╗ ██╗    ██╗██╗     ███████╗██████╗  ██████╗ ██╗  ██╗
-██╔══██╗██╔══██╗██╔═══██╗██║    ██║██║     ██╔════╝██╔══██╗██╔═══██╗╚██╗██╔╝
-██████╔╝██████╔╝██║   ██║██║ █╗ ██║██║     █████╗  ██████╔╝██║   ██║ ╚███╔╝ 
-██╔══██╗██╔══██╗██║   ██║██║███╗██║██║     ██╔══╝  ██╔══██╗██║   ██║ ██╔██╗ 
-██████╔╝██║  ██║╚██████╔╝╚███╔███╔╝███████╗███████╗██║  ██║╚██████╔╝██╔╝ ██╗
-╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+__________.__         /\ ___________.__       .__     __                       
+\______   \__|_______ )/ \_   _____/|__| ____ |  |___/  |_  ___________  ______
+ |       _/  \___   /     |    __)  |  |/ ___\|  |  \   __\/ __ \_  __ \/  ___/
+ |    |   \  |/    /      |     \   |  / /_/  >   Y  \  | \  ___/|  | \/\___ \ 
+ |____|_  /__/_____ \     \___  /   |__\___  /|___|  /__|  \___  >__|  /____  >
+        \/         \/         \/      /_____/      \/          \/           \/ 
 ```
 
 **A REAL-TIME MULTIPLAYER 2D FIGHTING GAME — INSERT COIN TO CONTINUE**
@@ -35,7 +35,7 @@
 
 <img align="right" width="220" src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/data/hyperkitty.gif"/>
 
-**BrawlBox** is a browser-based, real-time 2-player fighting game. Two fighters. One arena. One winner.
+**Riz-Fighters** is a browser-based, real-time 2-player fighting game. Two fighters. One arena. One winner.
 
 - Real-time online 1v1 combat over WebSockets
 - Browser-based — no download required
@@ -81,7 +81,7 @@
 ## PROJECT STRUCTURE
 
 ```
-brawlbox/
+riz-fighters/
 ├── src/
 │   ├── routes/          ← TanStack Start pages (lobby, matchmaking)
 │   ├── game/            ← Phaser 3 scenes & game logic
@@ -106,8 +106,8 @@ brawlbox/
 ### STEP 1 — Clone the repo
 
 ```bash
-git clone https://github.com/your-username/brawlbox.git
-cd brawlbox
+git clone https://github.com/PRIEYAN/Riz-Fighters.git
+cd Riz-Fighters
 ```
 
 ### STEP 2 — Install dependencies
